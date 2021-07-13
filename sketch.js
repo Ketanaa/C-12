@@ -5,7 +5,7 @@ function preload(){
   gardenImg = loadImage("garden.png");
   rabbitImg = loadImage("rabbit.png");
   orangeLeafImg = loadImage("orangeleaf.png");
-
+  appleImg = loadImage("apple.png");
 }
 
 function setup(){
@@ -29,35 +29,10 @@ function draw() {
   edges= createEdgeSprites();
   rabbit.collide(edges);
 
-  spawnApples();
-  spawnOrangeLeaf();
 
   rabbit.x = mouseX;
 
-  drawSprites();
-}
-
-
-function createApples()
-{
-  // write your code here 
-  apple=createSprite(random(50,150),40,10,10);
-  appleImg = loadImage(apple.png);
-  apple.scale=0.4;
-  apple.velocity.Y= 4; 
-
-}
-
-function createOrangeLeaf()
-{
-  // write your code here 
-  orangeLeaf=createSprite(random(50,150),40,10,10);
-  orangeLeaf = loadImage(orangeleaf.png);
-  orangeLeaf.scale=0.4;
-  orangeLeaf.velocity.Y= 4; 
-}
-
-var select_sprites=math.round(random(1,2));
+  var select_sprites=Math.round(random(1,2));
 
 if(frameCount%80 === 0)
 {
@@ -70,3 +45,28 @@ if(frameCount%80 === 0)
     createOrangeLeaf()
   }
 }
+
+  drawSprites();
+}
+
+
+function createApples()
+{
+  // write your code here 
+  apple=createSprite(random(50,150),40,10,10);
+  apple.addImage(appleImg);
+  apple.scale=0.1;
+  apple.velocityY= 4; 
+  apple.lifetime=200;
+}
+
+function createOrangeLeaf()
+{
+  // write your code here 
+  orangeLeaf=createSprite(random(50,150),40,10,10);
+  orangeLeaf.addImage(orangeLeafImg);
+  orangeLeaf.scale=0.1;
+  orangeLeaf.velocityY= 4; 
+  orangeLeaf.lifetime=200;
+}
+
